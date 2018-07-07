@@ -17,6 +17,8 @@ public class MainView extends VerticalLayout {
 	private final CustomerRepository repo;
 
 	private final CustomerEditor editor;
+	
+	private final Calculator calculator;
 
 	final Grid<Customer> grid;
 
@@ -24,16 +26,17 @@ public class MainView extends VerticalLayout {
 
 	private final Button addNewBtn;
 
-	public MainView(CustomerRepository repo, CustomerEditor editor) {
+	public MainView(CustomerRepository repo, CustomerEditor editor, Calculator calculator) {
 		this.repo = repo;
 		this.editor = editor;
+		this.calculator = calculator;
 		this.grid = new Grid<>(Customer.class);
 		this.filter = new TextField();
 		this.addNewBtn = new Button("New customer", VaadinIcon.PLUS.create());
 
 		// build layout
 		HorizontalLayout actions = new HorizontalLayout(filter, addNewBtn);
-		add(actions, grid, editor);
+		add(/*actions, grid, editor, */calculator);
 
 		grid.setHeight("300px");
 		grid.setColumns("id", "firstName", "lastName");
@@ -55,6 +58,7 @@ public class MainView extends VerticalLayout {
 		// Instantiate and edit new Customer the new button is clicked
 		addNewBtn.addClickListener(e -> editor.editCustomer(new Customer("", "")));
 
+		
 		// Listen changes made by the editor, refresh data from backend
 		editor.setChangeHandler(() -> {
 			editor.setVisible(false);
@@ -77,3 +81,4 @@ public class MainView extends VerticalLayout {
 	// end::listCustomers[]
 
 }
+

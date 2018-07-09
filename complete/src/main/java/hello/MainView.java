@@ -56,7 +56,7 @@ public class MainView extends VerticalLayout {
 		});
 
 		// Instantiate and edit new Customer the new button is clicked
-		addNewBtn.addClickListener(e -> editor.editCustomer(new Customer("", "")));
+		addNewBtn.addClickListener(e -> editor.editCustomer(new Customer("", e.toString())));
 
 		
 		// Listen changes made by the editor, refresh data from backend

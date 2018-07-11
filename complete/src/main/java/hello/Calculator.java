@@ -30,16 +30,18 @@ public class Calculator extends VerticalLayout {
 		Button minus = new Button("-");
 		Button multiply = new Button("*");
 		Button div = new Button("/");
+		Button remain =new Button ("%");
 
 		HorizontalLayout buttonLine = new HorizontalLayout();
-		buttonLine.add(plus, minus, multiply, div);
+		buttonLine.add(plus, minus, multiply, div, remain);
 
 		add(inputTF1, inputTF2, outputTF);
 		Calculator currentInstance = this;
 
-		add(plus, minus, multiply, div);
+		add(plus, minus, multiply, div, remain);
 		plus.addClickListener(new PlusButtonListenerImpl(this));
 		minus.addClickListener(new MinusButtonListenerImpl());
+		remain.addClickListener(e->this.outputTF.setValue(Integer.toString(this.getIntInput1() % this.getIntInput2())));
 		
 		div.addClickListener(new ComponentEventListener() {
 			@Override

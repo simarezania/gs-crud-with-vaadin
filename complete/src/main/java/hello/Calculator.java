@@ -52,6 +52,8 @@ public class Calculator extends VerticalLayout {
 
 		});
 		
+		// inner class in method
+		
 		class MultiplyButtonListenerImpl implements ComponentEventListener {
 
 			public void onComponentEvent(ComponentEvent event) {
@@ -74,6 +76,8 @@ public class Calculator extends VerticalLayout {
 		return Integer.parseInt(StringInput2);
 	}
 
+	// inner class
+	
 	class MinusButtonListenerImpl implements ComponentEventListener {
 		int innerClass=7;
 
